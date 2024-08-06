@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Contact</title>
+    <link rel="stylesheet" href="assests/style/navbar.css" />
+    <link rel="stylesheet" href="assests/style/contact.css" />
+    <link rel="stylesheet" href="assests/style/index.css" />
+    <link rel="stylesheet" href="assests/style/project.css" />
+    <link rel="stylesheet" href="assests/style/contactResponsive.css" />
+    <link rel="stylesheet" href="assests/style/navbarResponsive.css" />
+    <link rel="stylesheet" href="assests/style/testimonialResponsive.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css"
+      integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+  </head>
+  <body>
+    <header>
+      <nav>
+        <div class="left">
+          <ul>
+            <li>
+              <img
+                src="assests/images/dumbways.png"
+                alt="dumbwaysLogo"
+                class="logo"
+              />
+            </li>
+            <li class="home">
+              <a href="indexBootstrap.html"> Home </a>
+            </li>
+            <li class="myProject">
+              <a href="addProjectBootstrap.html"> My Project </a>
+            </li>
+
+            <li class="testimonial">
+              <a href="testimonial.html"> Testimonials </a>
+            </li>
+          </ul>
+        </div>
+        <div class="right">
+          <div>
+            <a href="contact.html">Contact Me</a>
+          </div>
+          <div>
+            <button id="btn-Hamburger" onclick="toggleHamburger()">
+              <i class="fa-solid fa-bars fa-lg" style="color: #110d0d"></i>
+            </button>
+          </div>
+        </div>
+      </nav>
+
+      <div class="hamburger hide">
+        <ul>
+          <li id="logoHam">
+            <a href="index.html" style="text-decoration: none; color: black"
+              >Home</a
+            >
+          </li>
+          <li id="myProjectHam">
+            <a href="myProject.html" style="text-decoration: none; color: black"
+              >My Project</a
+            >
+          </li>
+          <li id="testimonialNav">
+            <a
+              href="testimonial.html"
+              style="text-decoration: none; color: black"
+              >Testimonials</a
+            >
+          </li>
+          <li id="contactMeHam">
+            <a href="contact.html" style="text-decoration: none; color: white"
+              >Contact Me</a
+            >
+          </li>
+        </ul>
+      </div>
+    </header>
+    <main>
+      <div><h1>GET IN TOUCH</h1></div>
+      <form>
+        <div>
+          <label for="nameInput">Name</label>
+          <input
+            type="text"
+            id="nameInput"
+            placeholder="input your name.."
+            required
+          />
+        </div>
+        <div>
+          <label for="emailInput">Email</label>
+          <input type="email" id="emailInput" placeholder="xxx@mail.com" />
+        </div>
+        <div>
+          <label for="phoneNumber">Phone Number</label>
+          <input type="text" id="phoneNumber" placeholder="62+" />
+        </div>
+        <div>
+          <label for="selectSubject">Subject</label>
+          <select name="subject" id="selectSubject">
+            <option value="select your subject" hidden>
+              Select Your Subject
+            </option>
+            <option value="Backend Developer">Backend Developer</option>
+            <option value="Frontend Developer">Frontend Developer</option>
+            <option value="Fullstack Developer">Fullstack Developer</option>
+          </select>
+        </div>
+        <div>
+          <label for="yourMessage">Your Message</label>
+          <textarea name="message" id="yourMessage"></textarea>
+        </div>
+        <div>
+          <button type="submit" onclick="formSend(); return false">
+            submit
+          </button>
+        </div>
+      </form>
+    </main>
+  </body>
+  <script src="assests/js/index.js"></script>
+  <script src="assests/js/nav.js"></script>
+</html>

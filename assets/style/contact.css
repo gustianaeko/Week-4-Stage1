@@ -1,0 +1,48 @@
+/* contact */
+h1 {
+  margin-top: 50px;
+  text-align: center;
+}
+
+form {
+  width: 450px;
+  margin: 40px auto;
+}
+
+input,
+select,
+textarea {
+  box-sizing: border-box;
+  width: 100%;
+  padding: 12px;
+  border-radius: 5px;
+  border: 1px solid rgb(197, 182, 182);
+}
+
+textarea {
+  resize: vertical;
+  height: 200px;
+}
+
+form div {
+  margin-bottom: 15px;
+}
+
+form label {
+  font-weight: 700;
+}
+
+button {
+  border-radius: 15px;
+  padding: 5px 30px;
+  font-weight: 700;
+  color: white;
+  background-color: black;
+  float: right;
+  margin-top: 7px;
+}
+
+button:hover {
+  background-color: rgb(255, 166, 0);
+  transition: 0.5;
+}

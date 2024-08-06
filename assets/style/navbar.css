@@ -1,0 +1,80 @@
+/* Navbar */
+nav {
+  display: flex;
+  justify-content: space-between;
+  background-color: rgb(241, 251, 255);
+  padding: 0 80px;
+  align-items: center;
+}
+/* navbar Left */
+
+.left {
+  margin: 5px;
+  width: 50%;
+}
+
+.home a {
+  text-decoration: none;
+  color: black;
+}
+
+nav .left ul {
+  display: flex;
+  list-style: none;
+  padding: 0;
+}
+
+nav .left ul .logo {
+  width: 40px;
+  margin-right: 20px;
+}
+
+nav .left ul .home {
+  font-weight: bold;
+}
+
+nav .left ul .myProject a {
+  font-weight: 85;
+  text-decoration: none;
+  color: black;
+}
+
+.left .testimonial a {
+  font-weight: 85;
+  text-decoration: none;
+  color: black;
+}
+
+nav .left ul li {
+  margin-right: 20px;
+}
+
+/* navbar Right */
+
+.right a {
+  background-color: rgb(14, 13, 13);
+  text-decoration: none;
+  color: white;
+  padding: 5px 16px;
+  border-radius: 15px;
+  float: right;
+}
+
+.right a:hover {
+  background-color: rgb(255, 166, 0);
+  transition: 0.5;
+}
+
+/* hamburger */
+#btn-Hamburger {
+  background-color: rgba(225, 232, 235, 0.658);
+  border: none;
+  border-radius: none;
+  box-shadow: none;
+  color: black;
+  font-size: larger;
+}
+
+.hide {
+  display: none !important;
+}

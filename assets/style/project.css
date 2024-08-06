@@ -1,0 +1,89 @@
+/* myProject */
+.radioBtn {
+  display: flex;
+  margin: 20px 0;
+  padding: 10px;
+  width: 80%;
+}
+
+#nodeJS,
+#nextJS,
+#reactJS,
+#typeScript {
+  margin: 15px;
+}
+
+#btn-submit-project {
+  margin-bottom: 70px;
+  float: right;
+}
+
+.line {
+  border: 2px solid #dbdbdb;
+  width: 80%;
+  margin: auto;
+}
+
+/* myProject Detail */
+
+.contentDetail .upper {
+  display: flex;
+  margin-top: 30px;
+}
+
+/* content project */
+.project-list {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+
+  padding: 40px;
+  width: 90%;
+  margin: auto;
+}
+
+.project-list-item {
+  flex: 1 0 30%;
+  border-left: 1px solid black;
+  border-right: 1px solid black;
+  border-bottom: 1px solid black;
+  box-shadow: 1px 1px 4px black;
+  margin: 25px 1%;
+  border-radius: 15px;
+}
+
+.btn-group button {
+  margin-right: 5px;
+  float: right;
+}
+
+.project-content {
+  text-align: center;
+}
+
+.description {
+  text-align: justify;
+  padding: 10px;
+}
+
+/* input file */
+input[type="file"]::file-selector-button {
+  margin-right: 20px;
+  border: 1px solid black;
+  background-color: black;
+  padding: 10px 20px;
+  border-radius: 10px;
+  color: #fff;
+  cursor: pointer;
+  transition: background 0.2s ease-in-out;
+}
+
+input[type="file"]::file-selector-button:hover {
+  background: orange;
+}
+
+/* technologies */
+
+.technologies button {
+  float: right;
+}

@@ -1,0 +1,156 @@
+@media only screen and (max-width: 959px) {
+  h2 {
+    font-size: medium;
+  }
+
+  p,
+  .detailProjectContent,
+  .description {
+    font-size: small;
+  }
+
+  .btn-group {
+    justify-content: center;
+    width: auto;
+  }
+
+  .btn-post {
+    width: auto;
+    padding: 2px 2px;
+    font-size: 12px;
+  }
+
+  .btn-edit {
+    width: auto;
+    padding: 2px 2px;
+    font-size: 12px;
+  }
+}
+
+@media only screen and (max-width: 653px) {
+  nav {
+    padding: 0;
+    text-align: center;
+    width: auto;
+  }
+
+  .left .logo {
+    width: 40px;
+    margin: 2px 20px;
+  }
+
+  #btn-Hamburger {
+    margin: 2px 20px;
+  }
+}
+
+@media only screen and (max-width: 600px) {
+  /* content project */
+  .project-list {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+
+    padding: 40px;
+    width: 90%;
+    margin: auto;
+  }
+
+  .project-list-item {
+    flex: 2 0 45%;
+    border-left: 1px solid black;
+    border-right: 1px solid black;
+    border-bottom: 1px solid black;
+    box-shadow: 1px 1px 4px black;
+    margin: 25px 1%;
+    border-radius: 15px;
+  }
+
+  nav {
+    width: 100%;
+  }
+}
+
+@media only screen and (max-width: 512px) {
+  form {
+    width: 85%;
+  }
+
+  nav {
+    width: 100%;
+  }
+}
+
+@media only screen and (max-width: 455px) {
+  .radioBtn label {
+    font-size: smaller;
+  }
+
+  nav {
+    width: 100%;
+  }
+
+  form {
+    width: 85%;
+  }
+}
+
+@media only screen and (max-width: 400px) {
+  nav {
+    width: 100%;
+  }
+
+  .project-list {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+
+    padding: 20px;
+    width: 80%;
+    margin: auto;
+  }
+
+  form {
+    width: 70%;
+  }
+
+  .radioBtn label {
+    font-size: x-small;
+  }
+
+  .btn-group {
+    justify-content: center;
+    width: auto;
+  }
+
+  .btn-post {
+    width: auto;
+    padding: 2px 2px;
+    font-size: 12px;
+  }
+
+  .btn-edit {
+    width: auto;
+    padding: 2px 2px;
+    font-size: 12px;
+  }
+}
+
+@media only screen and (max-width: 380px) {
+  .btn-group {
+    justify-content: center;
+    width: auto;
+  }
+
+  .btn-post {
+    width: auto;
+    padding: 2px 2px;
+    font-size: 12px;
+  }
+
+  .btn-edit {
+    width: auto;
+    padding: 2px 2px;
+    font-size: 12px;
+  }
+}

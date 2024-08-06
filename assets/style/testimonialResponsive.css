@@ -1,0 +1,28 @@
+@media only screen and (max-width: 901px) {
+  .testimonial {
+    width: 40%;
+  }
+  .left ul .home {
+    display: none;
+  }
+
+  .left ul .myProject {
+    display: none;
+  }
+
+  .left ul .testimonial {
+    display: none;
+  }
+}
+
+@media only screen and (max-width: 900px) {
+  .testimonial {
+    width: 40%;
+  }
+}
+
+@media only screen and (max-width: 700px) {
+  .testimonial {
+    width: 50%;
+  }
+}

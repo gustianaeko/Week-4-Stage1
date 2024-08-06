@@ -1,0 +1,165 @@
+@media only screen and (max-width: 901px) {
+  .home a {
+    display: none;
+  }
+
+  .myProject a {
+    display: none;
+  }
+
+  .nav .left ul li .testimonial {
+    display: none;
+  }
+}
+
+@media only screen and (max-width: 652px) {
+  nav {
+    display: flex;
+    justify-content: space-between;
+    background-color: rgb(241, 251, 255);
+    padding: 0 0;
+    align-items: center;
+  }
+
+  .home a {
+    display: none;
+  }
+
+  .myProject a {
+    display: none;
+  }
+
+  .nav .left ul .testimonial {
+    display: none;
+  }
+
+  nav .left ul .logo {
+    width: 40px;
+    float: left;
+  }
+
+  .right {
+    margin: 0;
+    float: right;
+    padding-right: 5px;
+  }
+
+  .right a {
+    display: none;
+  }
+
+  button {
+    border-radius: 10px;
+    padding: 5px 10px;
+    font-weight: 700;
+    color: white;
+    background-color: rgb(2, 1, 1);
+    float: right;
+  }
+
+  .left {
+    margin: 5px;
+    width: 50%;
+  }
+}
+
+@media only screen and (min-width: 653px) {
+  #btn-Hamburger {
+    display: none;
+  }
+
+  #btn-Hamburger:hover {
+    background-color: rgb(255, 166, 0);
+    transition: 0.5;
+  }
+
+  /* .right a {
+    background-color: rgb(14, 13, 13);
+    text-decoration: none;
+    color: white;
+    padding: 5px 0;
+    border-radius: 15px;
+    float: right;
+  } */
+}
+
+@media only screen and (max-width: 520px) {
+  nav {
+    display: flex;
+    justify-content: space-between;
+    background-color: rgb(241, 251, 255);
+    padding: 0 0;
+    align-items: center;
+  }
+}
+
+@media only screen and (min-width: 401px) {
+  .hamburger ul {
+    list-style: none;
+    text-align: center;
+    margin: 6px auto;
+    width: auto;
+    font-size: large;
+    font-weight: 600;
+  }
+}
+
+@media only screen and (max-width: 400px) {
+  nav {
+    display: flex;
+    justify-content: space-between;
+    background-color: rgb(241, 251, 255);
+    padding: 0 0;
+    align-items: center;
+  }
+
+  .right a {
+    background-color: rgb(14, 13, 13);
+    text-decoration: none;
+    color: white;
+    border-radius: 15px;
+  }
+
+  nav .left ul .logo {
+    width: 40px;
+    float: left;
+  }
+
+  #btn-Hamburger {
+    background-color: rgba(225, 232, 235, 0.658);
+    border: none;
+    border-radius: none;
+    box-shadow: none;
+    color: black;
+    font-size: medium;
+  }
+
+  .hamburger ul {
+    list-style: none;
+    text-align: center;
+    margin: 10px auto;
+    width: auto;
+    font-size: medium;
+    font-weight: 550;
+    /* background-color: red; */
+    line-height: 1.5;
+  }
+}
+
+#contactMeHam {
+  text-align: center;
+  margin: 6px auto;
+  width: 40%;
+  font-size: medium;
+  font-weight: 550;
+  border: 1px solid black;
+  border-radius: 15px;
+  padding: 1px 2px;
+  background-color: black;
+  color: white;
+}
+
+#contactMeHam:hover {
+  background-color: rgb(255, 166, 0);
+  transition: 0.5;
+}

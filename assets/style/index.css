@@ -1,0 +1,126 @@
+body {
+  margin: 0;
+  font-family: "Lucida Sans", "Lucida Sans Regular", "Lucida Grande",
+    "Lucida Sans Unicode", Geneva, Verdana, sans-serif;
+  background-color: rgba(225, 232, 235, 0.658);
+}
+
+/* main */
+.mainContent {
+  display: flex;
+  justify-content: space-around;
+  border: 3px solid rgb(241, 251, 255);
+  border-radius: 10px;
+  margin: 100px 50px;
+  box-shadow: 2px 4px 8px rgb(102, 102, 102);
+  /* background-color: rgb(241, 251, 255); bg-body-tertiary */
+}
+
+/* mainLeft */
+
+main .mainContent .mainLeft {
+  width: 60%;
+  text-align: justify;
+  padding: 80px 50px;
+}
+
+main .mainContent .mainLeft .contactAndDownloadCV {
+  display: flex;
+  margin: 40px 0;
+}
+
+.downloadCV a {
+  text-decoration: none;
+  color: black;
+}
+
+main .mainContent .mainLeft .contactAndDownloadCV .contact a {
+  border: 1px solid #5c636a;
+  border-radius: 15px;
+  text-decoration: none;
+  padding: 4px 20px;
+  margin-right: 30px;
+  margin-top: 100px;
+  background-color: #5c636a;
+  color: white;
+}
+
+main .mainContent .mainLeft .contactAndDownloadCV .contact a:hover {
+  background-color: rgb(255, 166, 0);
+  transition: 0.5;
+}
+
+.socialIcons {
+  margin-top: 100px;
+}
+
+.socialIcons a {
+  color: #ffffff;
+  border: 1px solid #5c636a;
+  background-color: #5c636a;
+  border-radius: 50%;
+  font-size: 20px;
+  padding: 10px 10px;
+  margin-right: 30px;
+  text-decoration: none;
+}
+
+.socialIcons a:hover {
+  background-color: rgb(255, 166, 0);
+  transition: 0.5;
+}
+
+/* mainRight */
+
+main .mainContent .mainRight {
+  background-color: rgb(241, 251, 255);
+  width: 40%;
+  padding: 50px;
+}
+
+.profile {
+  border: 1px solid rgb(245, 241, 241);
+  border-radius: 10px;
+  /* background-color: rgba(225, 232, 235, 0.658); */
+  box-shadow: 0px 4px 8px rgb(102, 102, 102);
+  width: 400px;
+  text-align: center;
+  margin: auto;
+}
+
+.cat {
+  width: 100%;
+  border-radius: 10px 10px 0 0;
+}
+
+/* left detail */
+.leftDetail {
+  width: 50%;
+
+  padding: 20px;
+  align-items: center;
+}
+
+.leftDetail img {
+  width: 100%;
+  margin-left: 30px;
+}
+
+/* right detail */
+.rightDetail {
+  width: 50%;
+
+  margin-left: 60px;
+}
+
+.techno {
+  margin-top: 40px;
+}
+
+.bottom {
+  padding: 45px;
+}
+
+.bottom .description p {
+  text-align: justify;
+}

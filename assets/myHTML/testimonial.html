@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Testimonials</title>
+    <link rel="stylesheet" href="assests/style/navbar.css" />
+    <link rel="stylesheet" href="assests/style/navbarResponsive.css" />
+    <link rel="stylesheet" href="assests/style/index.css" />
+    <link rel="stylesheet" href="assests/style/testimonial.css" />
+    <link rel="stylesheet" href="assests/style/testimonialResponsive.css" />
+    <link rel="stylesheet" href="assests/style/navbarResponsive.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
+    />
+  </head>
+  <body>
+    <header>
+      <nav>
+        <div class="left">
+          <ul>
+            <li>
+              <img
+                src="assests/images/dumbways.png"
+                alt="dumbwaysLogo"
+                class="logo"
+              />
+            </li>
+            <li class="home">
+              <a href="index.html"> Home </a>
+            </li>
+            <li class="myProject">
+              <a href="myProject.html"> My Project </a>
+            </li>
+            <li class="testimonial">
+              <a href="testimonial.html"> Testimonials </a>
+            </li>
+          </ul>
+        </div>
+        <div class="right">
+          <div>
+            <a href="contact.html">Contact Me</a>
+          </div>
+          <div class="navHam">
+            <button id="btn-Hamburger" onclick="toggleHamburger()">
+              <i class="fa-solid fa-bars fa-lg" style="color: #110d0d"></i>
+            </button>
+          </div>
+        </div>
+      </nav>
+
+      <div class="hamburger hide">
+        <ul>
+          <li id="logoHam">
+            <a href="index.html" style="text-decoration: none; color: black"
+              >Home</a
+            >
+          </li>
+          <li id="myProjectHam">
+            <a href="myProject.html" style="text-decoration: none; color: black"
+              >My Project</a
+            >
+          </li>
+          <li id="testimonialNav">
+            <a
+              href="testimonial.html"
+              style="text-decoration: none; color: black"
+              >Testimonials</a
+            >
+          </li>
+          <li id="contactMeHam">
+            <a href="contact.html" style="text-decoration: none; color: white"
+              >Contact Me</a
+            >
+          </li>
+        </ul>
+      </div>
+    </header>
+    <main>
+      <div class="container">
+        <h1>My Testimonials</h1>
+        <div class="container-rating">
+          <h2>Rating By Star</h2>
+          <div class="rating">
+            <button onclick="allTestimonial(1)" class="rating-btn">All</button>
+            <button onclick="filterTestimonial(1)" class="rating-btn">
+              1 <i class="fa-solid fa-star"></i>
+            </button>
+            <button class="rating-btn" onclick="filterTestimonial(2)">
+              2 <i class="fa-solid fa-star"></i>
+            </button>
+            <button class="rating-btn" onclick="filterTestimonial(3)">
+              3 <i class="fa-solid fa-star"></i>
+            </button>
+            <button class="rating-btn" onclick="filterTestimonial(4)">
+              4 <i class="fa-solid fa-star"></i>
+            </button>
+            <button class="rating-btn" onclick="filterTestimonial(5)">
+              5 <i class="fa-solid fa-star"></i>
+            </button>
+          </div>
+        </div>
+
+        <section class="testimonials" id="testimonials"></section>
+      </div>
+    </main>
+    <script src="assests/js/testimonialAsyncAwait.js"></script>
+    <script src="assests/js/index.js"></script>
+    <script src="assests/js/nav.js"></script>
+  </body>
+</html>

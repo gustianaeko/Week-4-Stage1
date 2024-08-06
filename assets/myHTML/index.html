@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Personal Website</title>
+    <link rel="stylesheet" href="assests/style/navbar.css" />
+    <link rel="stylesheet" href="assests/style/navbarResponsive.css" />
+    <link rel="stylesheet" href="assests/style/index.css" />
+    <link rel="stylesheet" href="assests/style/indexResponsive.css" />
+    <link rel="stylesheet" href="assests/style/testimonialResponsive.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css"
+      integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+  </head>
+  <body>
+    <div class="container">
+      <header>
+        <nav>
+          <div class="left">
+            <ul>
+              <li>
+                <img
+                  src="assests/images/dumbways.png"
+                  alt="dumbwaysLogo"
+                  class="logo"
+                />
+              </li>
+              <li class="home">
+                <a href="indexBootstrap.html"> Home </a>
+              </li>
+              <li class="myProject">
+                <a href="addProjectBootstrap.html"> My Project </a>
+              </li>
+              <li class="testimonial">
+                <a href="testimonial.html"> Testimonials </a>
+              </li>
+            </ul>
+          </div>
+          <div class="right">
+            <div>
+              <a href="contactMeBootstrap.html">Contact Me</a>
+            </div>
+            <div>
+              <button id="btn-Hamburger" onclick="toggleHamburger()">
+                <i class="fa-solid fa-bars fa-lg" style="color: #110d0d"></i>
+              </button>
+            </div>
+          </div>
+        </nav>
+        <div class="hamburger hide">
+          <ul>
+            <li id="logoHam">
+              <a
+                href="indexBootstrap.html"
+                style="text-decoration: none; color: black"
+                >Home</a
+              >
+            </li>
+            <li id="myProjectHam">
+              <a
+                href="addProjectBootstrap.html"
+                style="text-decoration: none; color: black"
+                >My Project</a
+              >
+            </li>
+            <li id="testimonialNav">
+              <a
+                href="testimonial.html"
+                style="text-decoration: none; color: black"
+                >Testimonials</a
+              >
+            </li>
+            <li id="contactMeHam">
+              <a href="contact.html" style="text-decoration: none; color: white"
+                >Contact Me</a
+              >
+            </li>
+          </ul>
+        </div>
+      </header>
+      <main>
+        <div class="mainContent">
+          <div class="mainLeft">
+            <h1>Hi Welcome to my hut</h1>
+            <p>
+              Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sed
+              tristique purus orci libero egestas ut. Augue suspendisse blandit
+              lorem massa ipsum, urna, egestas mi, lacinia. Dui fusce etiam
+              libero, lectus amet, risus molestie malesuada. Odio nam purus
+              consectetur euismod congue leo quisque. Turpis amet sollicitudin
+              nunc non in lectus dolor amet. Amet ullamcorper faucibus tindidunt
+              accumsan ac adipiscing arcu. Donec tristique at proin maecenas.
+              Ante elit et iaculis ac sit.
+            </p>
+            <div class="contactAndDownloadCV">
+              <div class="contact">
+                <a href="contact.html">contact</a>
+              </div>
+              <div class="downloadCV">
+                <a href="">
+                  download CV <i class="fa-solid fa-download fa-lg"></i
+                ></a>
+              </div>
+            </div>
+            <div class="socialIcons">
+              <a
+                href="https://www.linkedin.com/in/eko-gustiana-263574132/"
+                class="linkedIn"
+                ><i class="fa-brands fa-linkedin-in fa-lg"></i>
+              </a>
+              <a href="#" class="instagram">
+                <i class="fa-brands fa-instagram fa-lg"></i>
+              </a>
+              <a href="#" class="facebook"
+                ><i class="fa-brands fa-facebook fa-lg"></i>
+              </a>
+              <a href="#" class="twitter"
+                ><i class="fa-brands fa-twitter fa-lg"></i>
+              </a>
+            </div>
+          </div>
+
+          <div class="mainRight">
+            <div class="profile">
+              <img
+                class="cat"
+                src="https://i.etsystatic.com/5905953/r/il/878124/880977485/il_570xN.880977485_ia2q.jpg"
+                alt="a luckycat"
+              />
+
+              <div>
+                <h1 id="profileH1">Eko Gustiana</h1>
+                <h3 id="profileH3">Fullstack Developer</h3>
+              </div>
+            </div>
+          </div>
+        </div>
+      </main>
+    </div>
+  </body>
+  <script src="assests/js/index.js"></script>
+  <script src="assests/js/nav.js"></script>
+</html>

@@ -1,0 +1,30 @@
+@media only screen and (min-width: 653px) {
+  #btn-Hamburger {
+    display: none;
+  }
+}
+
+@media only screen and (max-width: 652px) {
+  .right a {
+    display: none;
+  }
+
+  .left .myProject,
+  .home {
+    display: none;
+  }
+
+  #btn-Hamburger {
+    margin: 2px 20px;
+  }
+
+  .left .logo {
+    margin: 2px 20px;
+  }
+}
+
+@media only screen and (max-width: 500px) {
+  form {
+    width: 85%;
+  }
+}
