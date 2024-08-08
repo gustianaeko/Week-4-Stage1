@@ -2,6 +2,14 @@ const express = require("express");
 const app = express();
 const port = 3000;
 
+//sequelize
+const { Sequelize, QueryTypes } = require("sequelize");
+
+const sequelize = new Sequelize("personalWebsite", "postgres", "postgres", {
+  host: "localhost",
+  dialect: "postgres",
+});
+
 //view engine
 app.set("view engine", "hbs");
 app.set("views", "views");
@@ -11,31 +19,50 @@ app.use("/assets", express.static("assets"));
 
 //body parser (parse from string to obj)
 app.use(express.json());
-app.use(express.urlencoded({ extended: true }));
+app.use(express.urlencoded({ extended: false }));
 
 //data and controllers
 const projects = [];
 
-const renderHome = (req, res) => {
-  res.render("home", { data: [...projects] });
+const renderHome = async (req, res) => {
+  try {
+    const fetchQuery = `select * from "Projects" p`;
+
+    const projects = await sequelize.query(fetchQuery, {
+      type: QueryTypes.SELECT,
+    });
+
+    res.render("home", { data: [...projects] });
+  } catch (err) {
+    console.log(err);
+  }
 };
 
 const renderProject = (req, res) => {
   res.render("project", { projects });
 };
 
-const createProject = (req, res) => {
-  const newProject = {
-    id: projects.length + 1,
-    title: req.body.title,
-    content: req.body.content,
-    startDate: req.body.startDate,
-    endDate: req.body.endDate,
-    createdAt: new Date().getFullYear(),
-  };
+const createProject = async (req, res) => {
+  // projects.push(newProject);
 
-  projects.push(newProject);
-  res.redirect("/home");
+  try {
+    const newProject = {
+      projectName: req.body.title,
+      description: req.body.content,
+      startDate: req.body.startDate,
+      endDate: req.body.endDate,
+      technologies: true,
+      imageUrl: "",
+      userId: 2,
+      createdAt: new Date().getFullYear(),
+    };
+
+    // const project = await Project.create(newProject);
+
+    res.redirect("/home");
+  } catch (err) {
+    console.log(err);
+  }
 };
 
 const renderProjectDetail = (req, res) => {
