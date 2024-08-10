@@ -131,7 +131,7 @@
 
       <div
         class="myProjects"
-        style="background-color: rgb(248, 249,250); margin: 40px; text-align: center; padding: 40px"
+        style="background-color: rgb(248, 249,250); margin: 40px; text-align: center; padding: 40px; border-radius: 15px;  box-shadow: 2px 4px 8px rgb(102, 102, 102)"
       >
         <div>
 
@@ -145,14 +145,17 @@
         <!-- My Projects -->
         <div
           class="myProjects"
-          style="background-color: rgb(248, 249,250); padding-top; 10px;"
+          style="background-color: rgb(248, 249,250); padding-top; 10px; "
         >
           <div class="container my-5">
             <div class="row">
               {{#each data}}
                 <!-- Start of Card -->
                 <div class="col-md-4 mb-4 mt-4">
-                  <div class="card">
+                  <div
+                    class="card"
+                    style="box-shadow: 2px 4px 8px rgb(102, 102, 102)"
+                  >
                     <img
                       src="./assets/images/red.jpg"
                       class="card-img-top"

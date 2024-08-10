@@ -76,47 +76,61 @@ const renderProjectDetail = async (req, res) => {
       type: QueryTypes.SELECT,
     });
 
-    res.render("projectDetail", { projectById });
+    res.render("projectDetail", { projectById: projectById[0] });
   } catch (err) {
     console.log(err);
   }
 };
 
-const renderFormEditProject = (req, res) => {
-  const id = req.params.projectId;
+const renderFormEditProject = async (req, res) => {
+  try {
+    const id = req.params.projectId;
+    // const projectById = projects.find((project) => project.id == id);
+    const projectById = await sequelize.query(
+      `SELECT * FROM "Projects" WHERE id = ${id}`
+    );
 
-  const projectById = projects.find((project) => project.id == id);
-
-  res.render("editProject", { projectById });
+    res.render("editProject", { data: projectById[0][0] });
+  } catch (err) {
+    console.log(err);
+  }
 };
 
-const editProject = (req, res) => {
-  const id = req.params.projectId;
+const editProject = async (req, res) => {
+  try {
+    const id = req.params.projectId;
 
-  const editedProject = {
-    id: id,
-    title: req.body.title,
-    content: req.body.content,
-    startDate: req.body.startDate,
-    endDate: req.body.endDate,
-    createdAt: new Date().getFullYear(),
-  };
+    const editedProject = {
+      title: req.body.title,
+      description: req.body.content,
+    };
 
-  const index = projects.findIndex((project) => project.id == id);
+    const editQuery = `
+    UPDATE "Projects" 
+    SET 
+    "projectName" = '${editedProject.title}',
+    "description" = '${editedProject.description}'
+    WHERE id = ${id}`;
 
-  projects[index] = editedProject;
+    await sequelize.query(editQuery);
 
-  res.redirect("/home");
+    res.redirect("/home");
+  } catch (err) {
+    console.log(err);
+  }
 };
 
-const deleteProject = (req, res) => {
-  const id = req.params.projectId;
+const deleteProject = async (req, res) => {
+  try {
+    const { projectId } = req.params;
+    const deleteQuery = `DELETE FROM "Projects" WHERE id = ${projectId}`;
 
-  const index = projects.findIndex((project) => project.id == id);
+    await sequelize.query(deleteQuery);
 
-  projects.splice(index, 1);
-
-  res.redirect("/home");
+    res.redirect("/home");
+  } catch (err) {
+    console.log(err);
+  }
 };
 
 const renderContact = (req, res) => {

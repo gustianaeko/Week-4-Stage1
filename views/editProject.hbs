@@ -60,7 +60,7 @@
     <form
       style="display: flex; flex-direction: column; align-items: center"
       class="formTest"
-      action="/editProject/{{projectById.id}}"
+      action="/editProject/{{data.id}}"
       method="post"
     >
       <h1 class="text-center mt-5 mb-5">UPDATE PROJECT</h1>
@@ -73,7 +73,7 @@
             class="form-control"
             id="title"
             name="title"
-            value="{{projectById.title}}"
+            value="{{data.projectName}}"
           />
         </div>
 
@@ -85,7 +85,7 @@
               class="form-control"
               id="startDate"
               name="startDate"
-              value="{{projectById.startDate}}"
+              value="{{data.startDate}}"
             />
           </div>
           <div class="form-group col-md-5 mt-3">
@@ -95,7 +95,7 @@
               class="form-control"
               id="endDate"
               name="endDate"
-              value="{{projectById.endDate}}"
+              value="{{data.endDate}}"
             />
           </div>
         </div>
@@ -107,9 +107,9 @@
             id="content"
             style="height: 100px; min-width: 100%;"
             name="content"
-            value="{{projectById.content}}"
+            value="{{data.description}}"
           >
-            {{projectById.content}}
+            {{data.description}}
           </textarea>
         </div>
 

@@ -10,6 +10,7 @@
     <link rel="stylesheet" href="/assets/style/navbarResponsive.css" />
     <link rel="stylesheet" href="/assets/style/index.css" />
     <link rel="stylesheet" href="/assets/style/indexResponsive.css" />
+    <link rel="stylesheet" href="/assets/style/project.css" />
     <!-- <link rel="stylesheet" href="assets/style/testimonialResponsive.css" /> -->
     <link
       rel="stylesheet"
@@ -48,11 +49,7 @@
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
           <ul class="navbar-nav me-auto">
             <li class="nav-item">
-              <a
-                class="nav-link active me-3"
-                aria-current="page"
-                href="/"
-              >Home</a>
+              <a class="nav-link me-3" aria-current="page" href="/">Home</a>
             </li>
             <li class="nav-item">
               <a class="nav-link" aria-current="page" href="/project">Add
@@ -64,43 +61,45 @@
       </div>
     </nav>
     <main>
-      <h1 style="text-align: center; margin-top: 20px">Project Detail</h1>
-      <div class="container my-5">
-        <div class="row">
-          <!-- Start of Card -->
-          <div class="col-md-4 mb-4 mt-4">
-            <div class="card">
-              <img
-                src="/assets/images/red.jpg"
-                class="card-img-top"
-                alt="Project Image"
-              />
-              <div class="card-body">
-                <h5 class="card-title">
-
-                  {{projectById.title}}
-                  -
-                  {{projectById.createdAt}}
-
-                </h5>
-                <p style="font-size: small;">
-                  Durasi : 3 Bulan
-                </p>
-                <div class="projectIcons" style="margin: 10px;">
-                  <i class="fa-brands fa-node fa-lg" style="color: blue;"></i>
-                  <i class="fa-brands fa-js fa-lg" style="color: blue;"></i>
-                  <i class="fa-brands fa-react fa-lg" style="color: blue;"></i>
-                  <i class="fa-brands fa-vuejs fa-lg" style="color: blue;"></i>
-                </div>
-                <p class="card-text" style="text-align: justify;">
-                  {{projectById.content}}
-                </p>
+      <div>
+        <h1 style="margin: 40px">{{projectById.projectName}}</h1>
+      </div>
+      <div class="contentDetail">
+        <div class="upper">
+          <div class="leftDetail">
+            <img src="assests/images/Mobile-App-Statistics.jpg" alt="" />
+          </div>
+          <div class="rightDetail">
+            <div>
+              <h2>Duration</h2>
+              <p>
+                <i class="fa-solid fa-calculator fa-lg"></i>
+                12 jan 2024 - 11 feb 2024
+              </p>
+              <p><i class="fa-regular fa-clock fa-lg"></i>1 month</p>
+            </div>
+            <div class="techno">
+              <h2>Technologies</h2>
+              <div class="upperIcons">
+                <p><i class="fa-brands fa-react fa-lg"></i> React JS</p>
+                <p><i class="fa-brands fa-square-js fa-lg"></i> JavaScript</p>
+              </div>
+              <div class="btmIcons">
+                <p><i class="fa-brands fa-node fa-lg"></i> Node JS</p>
+                <p><i class="fa-solid fa-shuttle-space fa-lg"></i> Socket IO</p>
               </div>
             </div>
           </div>
-
+        </div>
+        <div class="bottom">
+          <div class="description">
+            <p>
+              {{projectById.description}}
+            </p>
+          </div>
         </div>
       </div>
+
     </main>
 
     <script
