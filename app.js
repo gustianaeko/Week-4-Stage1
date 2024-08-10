@@ -4,7 +4,6 @@ const port = 3000;
 
 //sequelize
 const { Sequelize, QueryTypes } = require("sequelize");
-
 const sequelize = new Sequelize("personalWebsite", "postgres", "postgres", {
   host: "localhost",
   dialect: "postgres",
@@ -26,7 +25,7 @@ const projects = [];
 
 const renderHome = async (req, res) => {
   try {
-    const fetchQuery = `select * from "Projects" p`;
+    const fetchQuery = `SELECT * FROM "Projects" p`;
 
     const projects = await sequelize.query(fetchQuery, {
       type: QueryTypes.SELECT,
@@ -43,21 +42,23 @@ const renderProject = (req, res) => {
 };
 
 const createProject = async (req, res) => {
-  // projects.push(newProject);
-
   try {
-    const newProject = {
-      projectName: req.body.title,
-      description: req.body.content,
-      startDate: req.body.startDate,
-      endDate: req.body.endDate,
-      technologies: true,
-      imageUrl: "",
-      userId: 2,
-      createdAt: new Date().getFullYear(),
-    };
+    const {
+      title,
+      startDate,
+      endDate,
+      content,
+      technologies = true,
+      imageUrl = "test.jpg",
+      UserId = 1,
+      createdAt,
+      updatedAt,
+    } = req.body;
 
-    // const project = await Project.create(newProject);
+    const insertQuery = `INSERT INTO "Projects"("projectName", "startDate", "endDate", "description", "technologies", "imageUrl", "UserId", "createdAt", "updatedAt")
+    VALUES('${title}', NOW(), NOW(), '${content}', '${technologies}', '${imageUrl}', '${UserId}', NOW(), NOW())`;
+
+    await sequelize.query(insertQuery, { type: QueryTypes.INSERT });
 
     res.redirect("/home");
   } catch (err) {
@@ -65,11 +66,20 @@ const createProject = async (req, res) => {
   }
 };
 
-const renderProjectDetail = (req, res) => {
-  const id = req.params.projectId;
-  const projectById = projects.find((project) => project.id == id);
+const renderProjectDetail = async (req, res) => {
+  try {
+    const id = req.params.projectId;
 
-  res.render("projectDetail", { projectById });
+    const queryProjectDetailById = `SELECT * FROM "Projects" WHERE id=${id}`;
+
+    const projectById = await sequelize.query(queryProjectDetailById, {
+      type: QueryTypes.SELECT,
+    });
+
+    res.render("projectDetail", { projectById });
+  } catch (err) {
+    console.log(err);
+  }
 };
 
 const renderFormEditProject = (req, res) => {
