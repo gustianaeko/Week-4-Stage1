@@ -62,7 +62,30 @@
               <a class="nav-link" aria-current="page" href="project">Add Project</a>
             </li>
           </ul>
-          <a href="contact" class="btn btn-secondary">Contact Me</a>
+
+          <div class="d-flex justify-content-end">
+            <ul class="navbar-nav me-auto mb-2 ms-5 mb-lg-0">
+              {{#if isLogin}}
+                <li class="nav-item">
+                  <a class="nav-link fw-bold active text-danger">Hello,
+                    {{user}}</a>
+                </li>
+                <li class="nav-item ms-3">
+                  <a class="nav-link" href="/logout">Logout</a>
+                </li>
+              {{else}}
+                <li class="nav-item">
+                  <a class="nav-link" href="/register">Register</a>
+                </li>
+                <li class="nav-item ms-3">
+                  <a class="nav-link" href="/login">Login</a>
+                </li>
+              {{/if}}
+            </ul>
+            <a class="btn btn-secondary btn-submit ms-5" href="/contact">Contact
+              Me</a>
+          </div>
+          {{! <a href="contact" class="btn btn-secondary">Contact Me</a> }}
         </div>
       </div>
     </nav>
@@ -70,6 +93,14 @@
     <!-- end navbar -->
 
     <main>
+      {{#if messages.success}}
+        <div class="alert alert-success" role="alert">
+          <div class="container">
+            {{messages.success}}
+          </div>
+        </div>
+      {{/if}}
+
       <div class="mainContent">
         <div class="mainLeft bg-body-tertiary">
           <h1>Hi Welcome to my hut</h1>

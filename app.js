@@ -2,12 +2,35 @@ const express = require("express");
 const app = express();
 const port = 3000;
 
+//bcrypt
+const bcrypt = require("bcrypt");
+//session
+const session = require("express-session");
+//flas
+const flash = require("express-flash");
+
 //sequelize
 const { Sequelize, QueryTypes } = require("sequelize");
 const sequelize = new Sequelize("personalWebsite", "postgres", "postgres", {
   host: "localhost",
   dialect: "postgres",
 });
+
+//flash and session
+app.use(flash());
+app.use(
+  session({
+    cookie: {
+      maxAge: 1000 * 60 * 60,
+      httpOnly: true,
+      secure: false,
+    },
+    store: new session.MemoryStore(),
+    saveUninitialized: true,
+    resave: false,
+    secret: "luckyCat",
+  })
+);
 
 //view engine
 app.set("view engine", "hbs");
@@ -18,7 +41,7 @@ app.use("/assets", express.static("assets"));
 
 //body parser (parse from string to obj)
 app.use(express.json());
-app.use(express.urlencoded({ extended: false }));
+app.use(express.urlencoded({ extended: true }));
 
 //data and controllers
 const projects = [];
@@ -31,14 +54,28 @@ const renderHome = async (req, res) => {
       type: QueryTypes.SELECT,
     });
 
-    res.render("home", { data: [...projects] });
+    res.render("home", {
+      isLogin: req.session.isLogin,
+      user: req.session.user,
+      data: [...projects],
+    });
   } catch (err) {
     console.log(err);
   }
 };
 
+const renderContact = (req, res) => {
+  res.render("contact", {
+    isLogin: req.session.isLogin,
+    user: req.session.user,
+  });
+};
+
 const renderProject = (req, res) => {
-  res.render("project", { projects });
+  res.render("project", {
+    isLogin: req.session.isLogin,
+    user: req.session.user,
+  });
 };
 
 const createProject = async (req, res) => {
@@ -76,7 +113,11 @@ const renderProjectDetail = async (req, res) => {
       type: QueryTypes.SELECT,
     });
 
-    res.render("projectDetail", { projectById: projectById[0] });
+    res.render("projectDetail", {
+      projectById: projectById[0],
+      isLogin: req.session.isLogin,
+      user: req.session.user,
+    });
   } catch (err) {
     console.log(err);
   }
@@ -90,7 +131,11 @@ const renderFormEditProject = async (req, res) => {
       `SELECT * FROM "Projects" WHERE id = ${id}`
     );
 
-    res.render("editProject", { data: projectById[0][0] });
+    res.render("editProject", {
+      data: projectById[0][0],
+      isLogin: req.session.isLogin,
+      user: req.session.user,
+    });
   } catch (err) {
     console.log(err);
   }
@@ -114,7 +159,9 @@ const editProject = async (req, res) => {
 
     await sequelize.query(editQuery);
 
-    res.redirect("/home");
+    res.redirect(
+      "/home" < { isLogin: req.session.isLogin, user: req.session.user }
+    );
   } catch (err) {
     console.log(err);
   }
@@ -133,8 +180,69 @@ const deleteProject = async (req, res) => {
   }
 };
 
-const renderContact = (req, res) => {
-  res.render("contact");
+const renderFormRegister = async (req, res) => {
+  await res.render("register");
+};
+
+const registerUser = async (req, res) => {
+  try {
+    const { userName, email, password } = req.body;
+
+    bcrypt.hash(password, 10, async (err, hasedPassword) => {
+      if (err) {
+        res.redirect("/register");
+      } else {
+        const createUser = `INSERT INTO "Users" ("userName", "email", "password", "createdAt", "updatedAt") VALUES ('${userName}', '${email}', '${hasedPassword}', NOW(), NOW())`;
+
+        await sequelize.query(createUser);
+
+        res.redirect("/");
+      }
+    });
+  } catch (err) {
+    console.log(err);
+  }
+};
+
+const renderFormLogin = async (req, res) => {
+  await res.render("login");
+};
+
+const login = async (req, res) => {
+  try {
+    const { email, password } = req.body;
+    const queryLoginByEmail = `SELECT * FROM "Users" WHERE email = '${email}'`;
+
+    const isCheckEmail = await sequelize.query(queryLoginByEmail, {
+      type: QueryTypes.SELECT,
+    });
+
+    if (!isCheckEmail.length) {
+      req.flash("danger", "Email is not found");
+      return res.redirect("/login");
+    }
+
+    bcrypt.compare(password, isCheckEmail[0].password, (err, result) => {
+      if (!result) {
+        req.flash("danger", "Wrong Password!");
+        return res.redirect("/login");
+      } else {
+        req.session.isLogin = true;
+        req.session.user = isCheckEmail[0].userName;
+        req.session.idUser = isCheckEmail[0].id;
+        req.flash("success", "Login Success");
+
+        return res.redirect("/");
+      }
+    });
+  } catch (err) {
+    console.log(err);
+  }
+};
+
+const logout = (req, res) => {
+  req.session.destroy();
+  res.redirect("/login");
 };
 
 //routes
@@ -142,11 +250,16 @@ app.get("/", renderHome);
 app.get("/home", renderHome);
 app.get("/project", renderProject);
 app.post("/project", createProject);
+app.get("/contact", renderContact);
+app.get("/register", renderFormRegister);
+app.post("/register", registerUser);
+app.get("/login", renderFormLogin);
+app.post("/login", login);
+app.get("/logout", logout);
 app.get("/projectDetail/:projectId", renderProjectDetail);
 app.get("/editProject/:projectId", renderFormEditProject);
 app.post("/editProject/:projectId", editProject);
 app.get("/deleteProject/:projectId", deleteProject);
-app.get("/contact", renderContact);
 
 app.listen(port, () => {
   console.log(`App listening on port ${port}`);

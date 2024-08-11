@@ -56,13 +56,34 @@
                 Project</a>
             </li>
           </ul>
-          <a href="/contact" class="btn btn-secondary">Contact Me</a>
+          <div class="d-flex justify-content-end">
+            <ul class="navbar-nav me-auto mb-2 ms-5 mb-lg-0">
+              {{#if isLogin}}
+                <li class="nav-item">
+                  <a class="nav-link fw-bold active text-danger">Hello,
+                    {{user}}</a>
+                </li>
+                <li class="nav-item ms-3">
+                  <a class="nav-link" href="/logout">Logout</a>
+                </li>
+              {{else}}
+                <li class="nav-item">
+                  <a class="nav-link" href="/register">Register</a>
+                </li>
+                <li class="nav-item ms-3">
+                  <a class="nav-link" href="/login">Login</a>
+                </li>
+              {{/if}}
+            </ul>
+            <a class="btn btn-secondary btn-submit ms-5" href="/contact">Contact
+              Me</a>
+          </div>
         </div>
       </div>
     </nav>
     <main>
-      <div>
-        <h1 style="margin: 40px">{{projectById.projectName}}</h1>
+      <div style="margin: 50px; text-align: center;">
+        <h1>{{projectById.projectName}}</h1>
       </div>
       <div class="contentDetail">
         <div class="upper">
@@ -76,7 +97,7 @@
                 <i class="fa-solid fa-calculator fa-lg"></i>
                 12 jan 2024 - 11 feb 2024
               </p>
-              <p><i class="fa-regular fa-clock fa-lg"></i>1 month</p>
+              <p><i class="fa-regular fa-clock fa-lg"></i> 1 month</p>
             </div>
             <div class="techno">
               <h2>Technologies</h2>
