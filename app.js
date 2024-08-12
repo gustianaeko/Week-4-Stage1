@@ -6,8 +6,21 @@ const port = 3000;
 const bcrypt = require("bcrypt");
 //session
 const session = require("express-session");
-//flas
+//flash
 const flash = require("express-flash");
+//multer
+const multer = require("multer");
+const multerConfig = multer.diskStorage({
+  destination: (req, file, cb) => {
+    cb(null, "src/uploads");
+  },
+  filename: (req, file, cb) => {
+    const uniqSuffix = Date.now() + "-" + Math.round(Math.random() * 1e9);
+    cb(null, file.fieldname + "-" + uniqSuffix + ".jpg");
+  },
+});
+
+const upload = multer({ storage: multerConfig });
 
 //sequelize
 const { Sequelize, QueryTypes } = require("sequelize");
@@ -36,8 +49,9 @@ app.use(
 app.set("view engine", "hbs");
 app.set("views", "views");
 
-//static file access
+//static file access and uploads
 app.use("/assets", express.static("assets"));
+app.use("/uploads", express.static("src/uploads"));
 
 //body parser (parse from string to obj)
 app.use(express.json());
@@ -48,16 +62,25 @@ const projects = [];
 
 const renderHome = async (req, res) => {
   try {
-    const fetchQuery = `SELECT * FROM "Projects" p`;
+    // const fetchQuery = `SELECT * FROM "Projects" p`;
+    const fetchQuery = `SELECT p.id, p."projectName", p."imageUrl", p.description, u."userName"
+FROM "Projects" p
+LEFT JOIN "Users" u ON p."UserId" = u.id`;
 
     const projects = await sequelize.query(fetchQuery, {
       type: QueryTypes.SELECT,
     });
 
+    const obj = projects.map((data) => {
+      return {
+        ...data,
+      };
+    });
+
     res.render("home", {
+      data: obj,
       isLogin: req.session.isLogin,
       user: req.session.user,
-      data: [...projects],
     });
   } catch (err) {
     console.log(err);
@@ -86,11 +109,12 @@ const createProject = async (req, res) => {
       endDate,
       content,
       technologies = true,
-      imageUrl = "test.jpg",
-      UserId = 1,
+      UserId = req.session.idUser,
       createdAt,
       updatedAt,
     } = req.body;
+
+    const imageUrl = req.file.filename;
 
     const insertQuery = `INSERT INTO "Projects"("projectName", "startDate", "endDate", "description", "technologies", "imageUrl", "UserId", "createdAt", "updatedAt")
     VALUES('${title}', NOW(), NOW(), '${content}', '${technologies}', '${imageUrl}', '${UserId}', NOW(), NOW())`;
@@ -159,9 +183,7 @@ const editProject = async (req, res) => {
 
     await sequelize.query(editQuery);
 
-    res.redirect(
-      "/home" < { isLogin: req.session.isLogin, user: req.session.user }
-    );
+    res.redirect("/home");
   } catch (err) {
     console.log(err);
   }
@@ -250,7 +272,7 @@ const logout = (req, res) => {
 app.get("/", renderHome);
 app.get("/home", renderHome);
 app.get("/project", renderProject);
-app.post("/project", createProject);
+app.post("/project", upload.single("image"), createProject);
 app.get("/contact", renderContact);
 app.get("/register", renderFormRegister);
 app.post("/register", registerUser);
