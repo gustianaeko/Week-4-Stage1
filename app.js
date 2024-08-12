@@ -196,7 +196,8 @@ const registerUser = async (req, res) => {
 
         await sequelize.query(createUser);
 
-        res.redirect("/");
+        req.flash("success", "You are successfuly Register");
+        res.redirect("/login");
       }
     });
   } catch (err) {
