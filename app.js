@@ -62,24 +62,26 @@ const projects = [];
 
 const renderHome = async (req, res) => {
   try {
-    // const fetchQuery = `SELECT * FROM "Projects" p`;
-    const fetchQuery = `SELECT p.id, p."projectName", p."imageUrl", p.description, u."userName"
-FROM "Projects" p
-LEFT JOIN "Users" u ON p."UserId" = u.id`;
+    const fetchQuery = `SELECT * FROM "Projects" p`;
+    // const fetchQuery = `SELECT p.id, p."projectName", p."imageUrl", p.description, u."userName"
+    // FROM "Projects" p
+    // LEFT JOIN "Users" u ON p."UserId" = u.id`;
 
     const projects = await sequelize.query(fetchQuery, {
       type: QueryTypes.SELECT,
     });
 
-    const obj = projects.map((data) => {
+    const isLogin = req.session.isLogin;
+    const projectObjPlusIsLogin = projects.map((data) => {
       return {
         ...data,
+        isLogin: isLogin,
       };
     });
 
     res.render("home", {
-      data: obj,
-      isLogin: req.session.isLogin,
+      data: projectObjPlusIsLogin,
+      isLogin: isLogin,
       user: req.session.user,
     });
   } catch (err) {

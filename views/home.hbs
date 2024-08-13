@@ -169,8 +169,13 @@
           <h1>My Project</h1>
         </div>
         <div>
-          <a href="project" class="btn btn-secondary" style="float: right;">Add
-            New Project</a>
+          {{#if isLogin}}
+            <a
+              href="project"
+              class="btn btn-secondary"
+              style="float: right;"
+            >Add New Project</a>
+          {{/if}}
         </div>
 
         <!-- My Projects -->
@@ -228,18 +233,19 @@
                         ></i>
                       </div>
                       <div class="d-flex justify-content-end">
-                        <button class="btn btn-secondary me-3"><a
-                            href="/editProject/{{this.id}}"
-                            style="text-decoration: none;
+                        {{#if this.isLogin}}
+                          <button class="btn btn-secondary me-3"><a
+                              href="/editProject/{{this.id}}"
+                              style="text-decoration: none;
                             color: white"
-                          >Edit</a></button>
-                        <button class="btn btn-danger"><a
-                            href="/deleteProject/{{this.id}}"
-                            style="text-decoration: none;
+                            >Edit</a></button>
+                          <button class="btn btn-danger"><a
+                              href="/deleteProject/{{this.id}}"
+                              style="text-decoration: none;
                             color: white;"
-                          >
-                            Delete</a></button>
-
+                            >
+                              Delete</a></button>
+                        {{/if}}
                       </div>
                     </div>
                   </div>
